@@ -169,7 +169,7 @@ int nla_dump_errormsg(struct nlmsghdr *nlh)
 	if (!(nlh->nlmsg_flags & NLM_F_CAPPED))
 		hlen += nlmsg_len(&err->msg);
 
-	attr = (struct nlattr *) ((void *) err + hlen);
+	attr = (struct nlattr *) ((char *) err + hlen);
 	alen = nlh->nlmsg_len - hlen;
 
 	if (nla_parse(tb, NLMSGERR_ATTR_MAX, attr, alen, extack_policy) != 0) {

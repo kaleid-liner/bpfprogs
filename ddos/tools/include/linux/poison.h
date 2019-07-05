@@ -24,8 +24,8 @@
  * under normal circumstances, used to verify that nobody uses
  * non-initialized list entries.
  */
-#define LIST_POISON1  ((void *) 0x100 + POISON_POINTER_DELTA)
-#define LIST_POISON2  ((void *) 0x200 + POISON_POINTER_DELTA)
+#define LIST_POISON1  ((char *) 0x100 + POISON_POINTER_DELTA)
+#define LIST_POISON2  ((char *) 0x200 + POISON_POINTER_DELTA)
 #endif
 
 /********** include/linux/timer.h **********/
@@ -33,7 +33,7 @@
  * Magic number "tsta" to indicate a static timer initializer
  * for the object debugging code.
  */
-#define TIMER_ENTRY_STATIC	((void *) 0x300 + POISON_POINTER_DELTA)
+#define TIMER_ENTRY_STATIC	((char *) 0x300 + POISON_POINTER_DELTA)
 
 /********** mm/debug-pagealloc.c **********/
 #ifdef CONFIG_PAGE_POISONING_ZERO
@@ -44,7 +44,7 @@
 
 /********** mm/page_alloc.c ************/
 
-#define TAIL_MAPPING	((void *) 0x400 + POISON_POINTER_DELTA)
+#define TAIL_MAPPING	((char *) 0x400 + POISON_POINTER_DELTA)
 
 /********** mm/slab.c **********/
 /*

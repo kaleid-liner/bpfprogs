@@ -127,7 +127,7 @@ static int btf_parse_hdr(struct btf *btf, btf_print_fn_t err_log)
 static int btf_parse_str_sec(struct btf *btf, btf_print_fn_t err_log)
 {
 	const struct btf_header *hdr = btf->hdr;
-	const char *start = btf->nohdr_data + hdr->str_off;
+	const char *start = (char *)btf->nohdr_data + hdr->str_off;
 	const char *end = start + btf->hdr->str_len;
 
 	if (!hdr->str_len || hdr->str_len - 1 > BTF_MAX_NAME_OFFSET ||
@@ -145,28 +145,28 @@ static int btf_parse_type_sec(struct btf *btf, btf_print_fn_t err_log)
 {
 	struct btf_header *hdr = btf->hdr;
 	void *nohdr_data = btf->nohdr_data;
-	void *next_type = nohdr_data + hdr->type_off;
-	void *end_type = nohdr_data + hdr->str_off;
+	void *next_type = (char *)nohdr_data + hdr->type_off;
+	void *end_type = (char *)nohdr_data + hdr->str_off;
 
 	while (next_type < end_type) {
 		struct btf_type *t = next_type;
 		__u16 vlen = BTF_INFO_VLEN(t->info);
 		int err;
 
-		next_type += sizeof(*t);
+		next_type = (char *)next_type + sizeof(*t);
 		switch (BTF_INFO_KIND(t->info)) {
 		case BTF_KIND_INT:
-			next_type += sizeof(int);
+			next_type = (char *)next_type + sizeof(int);
 			break;
 		case BTF_KIND_ARRAY:
-			next_type += sizeof(struct btf_array);
+			next_type = (char *)next_type + sizeof(struct btf_array);
 			break;
 		case BTF_KIND_STRUCT:
 		case BTF_KIND_UNION:
-			next_type += vlen * sizeof(struct btf_member);
+			next_type = (char *)next_type + vlen * sizeof(struct btf_member);
 			break;
 		case BTF_KIND_ENUM:
-			next_type += vlen * sizeof(struct btf_enum);
+			next_type = (char *)next_type + vlen * sizeof(struct btf_enum);
 			break;
 		case BTF_KIND_TYPEDEF:
 		case BTF_KIND_PTR:

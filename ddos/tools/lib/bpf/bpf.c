@@ -23,6 +23,7 @@
 
 #include <stdlib.h>
 #include <memory.h>
+#include <strings.h>
 #include <unistd.h>
 #include <asm/unistd.h>
 #include <linux/bpf.h>

@@ -28,6 +28,7 @@
 #include <libgen.h>
 #include <inttypes.h>
 #include <string.h>
+#include <strings.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -716,7 +717,7 @@ bpf_object__init_maps(struct bpf_object *obj)
 		}
 		pr_debug("map %d is \"%s\"\n", map_idx,
 			 obj->maps[map_idx].name);
-		def = (struct bpf_map_def *)(data->d_buf + sym.st_value);
+		def = (struct bpf_map_def *)((char *)data->d_buf + sym.st_value);
 		/*
 		 * If the definition of the map in the object file fits in
 		 * bpf_map_def, copy it.  Any extra fields in our version
@@ -2282,15 +2283,15 @@ bpf_perf_event_read_simple(void *mem, unsigned long size,
 
 	base = ((char *)header) + page_size;
 
-	begin = base + data_tail % size;
-	end = base + data_head % size;
+	begin = (char *)base + data_tail % size;
+	end = (char *)base + data_head % size;
 
 	while (begin != end) {
 		struct perf_event_header *ehdr;
 
 		ehdr = begin;
-		if (begin + ehdr->size > base + size) {
-			long len = base + size - begin;
+		if ((char *)begin + ehdr->size > (char *)base + size) {
+			long len = (char *)base + size - (char *)begin;
 
 			if (*buf_len < ehdr->size) {
 				free(*buf);
@@ -2303,13 +2304,13 @@ bpf_perf_event_read_simple(void *mem, unsigned long size,
 			}
 
 			memcpy(*buf, begin, len);
-			memcpy(*buf + len, base, ehdr->size - len);
+			memcpy((char *)*buf + len, base, ehdr->size - len);
 			ehdr = (void *)*buf;
-			begin = base + ehdr->size - len;
-		} else if (begin + ehdr->size == base + size) {
+			begin = (char *)base + ehdr->size - len;
+		} else if ((char *)begin + ehdr->size == (char *)base + size) {
 			begin = base;
 		} else {
-			begin += ehdr->size;
+			begin = (char *)begin + ehdr->size;
 		}
 
 		ret = fn(ehdr, priv);

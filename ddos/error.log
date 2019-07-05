@@ -1,0 +1,48 @@
+============================================
+PLATFORM_VERSION_CODENAME=R
+PLATFORM_VERSION=R
+TARGET_PRODUCT=aosp_x86_64
+TARGET_BUILD_VARIANT=eng
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=x86_64
+TARGET_ARCH_VARIANT=x86_64
+TARGET_2ND_ARCH=x86
+TARGET_2ND_ARCH_VARIANT=x86_64
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-4.18.0-18-generic-x86_64-Ubuntu-18.10
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=PI
+OUT_DIR=out
+============================================
+ninja: no work to do.
+ninja: no work to do.
+No need to regenerate ninja file
+No need to regenerate ninja file
+No need to regenerate ninja file
+Starting ninja...
+[  5% 1/20] //system/bpfprogs/ddos:libmybpf clang tools/lib/bpf/libbpf.c [x86]
+FAILED: out/soong/.intermediates/system/bpfprogs/ddos/libmybpf/android_x86_x86_64_core_static/obj/system/bpfprogs/ddos/tools/lib/bpf/libbpf.o
+PWD=/proc/self/cwd prebuilts/clang/host/linux-x86/clang-r353983c/bin/clang -c -Isystem/bpfprogs/ddos/tools -Isystem/bpfprogs/ddos/tools/include -Isystem/bpfprogs/ddos/tools/perf -Isystem/bpfprogs/ddos/kernel-usr-include -Isystem/bpfprogs/ddos  -msse3 -mstackrealign -DANDROID -fmessage-length=0 -W -Wall -Wno-unused -Winit-self -Wpointer-arith -no-canonical-prefixes -DNDEBUG -UDEBUG -fno-exceptions -Wno-multichar -O2 -g -fno-strict-aliasing -fdebug-prefix-map=/proc/self/cwd= -D__compiler_offsetof=__builtin_offsetof -faddrsig -Wimplicit-fallthrough -Wno-error=implicit-fallthrough -Werror=int-conversion -fexperimental-new-pass-manager -Wno-reserved-id-macro -Wno-format-pedantic -Wno-unused-command-line-argument -fcolor-diagnostics -Wno-zero-as-null-pointer-constant -Wno-sign-compare -Wno-defaulted-function-deleted -Wno-inconsistent-missing-override -ffunction-sections -fdata-sections -fno-short-enums -funwind-tables -fstack-protector-strong -Wa,--noexecstack -D_FORTIFY_SOURCE=2 -Wstrict-aliasing=2 -Werror=return-type -Werror=non-virtual-dtor -Werror=address -Werror=sequence-point -Werror=date-time -Werror=format-security -nostdlibinc -m32 -march=prescott -DUSE_SSSE3 -mssse3 -msse4 -msse4.1 -msse4.2 -Iexternal/elfutils/libelf -Iexternal/libcxx/include -Iexternal/libcxxabi/include -Ibionic/libc/include -D__LIBC_API__=10000 -D__LIBM_API__=10000 -D__LIBDL_API__=10000 -Isystem/core/include -Isystem/media/audio/include -Ihardware/libhardware/include -Ihardware/libhardware_legacy/include -Ihardware/ril/include -Iframeworks/native/include -Iframeworks/native/opengl/include -Iframeworks/av/include -isystem bionic/libc/include -isystem bionic/libc/kernel/uapi -isystem bionic/libc/kernel/uapi/asm-x86 -isystem bionic/libc/kernel/android/scsi -isystem bionic/libc/kernel/android/uapi -Ilibnativehelper/include_jni -Wall -Werror -target i686-linux-android -Bprebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/x86_64-linux-android/bin -DANDROID_STRICT -fPIC -D_USING_LIBCXX -std=gnu99  -Werror=int-to-pointer-cast -Werror=pointer-to-int-cast -Werror=address-of-temporary -Werror=return-type -Wno-tautological-constant-compare -Wno-tautological-type-limit-compare -Wno-tautological-unsigned-enum-zero-compare -Wno-tautological-unsigned-zero-compare -Wno-enum-compare -Wno-enum-compare-switch -Wno-c++98-compat-extra-semi -Wno-return-std-move-in-c++11 -MD -MF out/soong/.intermediates/system/bpfprogs/ddos/libmybpf/android_x86_x86_64_core_static/obj/system/bpfprogs/ddos/tools/lib/bpf/libbpf.o.d -o out/soong/.intermediates/system/bpfprogs/ddos/libmybpf/android_x86_x86_64_core_static/obj/system/bpfprogs/ddos/tools/lib/bpf/libbpf.o system/bpfprogs/ddos/tools/lib/bpf/libbpf.c
+In file included from system/bpfprogs/ddos/tools/lib/bpf/libbpf.c:41:
+system/bpfprogs/ddos/tools/include/linux/list.h:628:11: error: incompatible pointer types assigning to 'struct hlist_node **' from 'struct hlist_node *' [-Werror,-Wincompatible-pointer-types]
+        n->pprev = (struct hlist_node *)LIST_POISON2;
+                 ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+[ 10% 2/20] //system/bpfprogs/ddos:libmybpf clang tools/lib/bpf/libbpf.c
+FAILED: out/soong/.intermediates/system/bpfprogs/ddos/libmybpf/android_x86_64_core_static/obj/system/bpfprogs/ddos/tools/lib/bpf/libbpf.o
+PWD=/proc/self/cwd prebuilts/clang/host/linux-x86/clang-r353983c/bin/clang -c -Isystem/bpfprogs/ddos/tools -Isystem/bpfprogs/ddos/tools/include -Isystem/bpfprogs/ddos/tools/perf -Isystem/bpfprogs/ddos/kernel-usr-include -Isystem/bpfprogs/ddos  -Werror=implicit-function-declaration -DANDROID -fmessage-length=0 -W -Wall -Wno-unused -Winit-self -Wpointer-arith -no-canonical-prefixes -DNDEBUG -UDEBUG -fno-exceptions -Wno-multichar -O2 -g -fno-strict-aliasing -fdebug-prefix-map=/proc/self/cwd= -D__compiler_offsetof=__builtin_offsetof -faddrsig -Wimplicit-fallthrough -Wno-error=implicit-fallthrough -Werror=int-conversion -fexperimental-new-pass-manager -Wno-reserved-id-macro -Wno-format-pedantic -Wno-unused-command-line-argument -fcolor-diagnostics -Wno-zero-as-null-pointer-constant -Wno-sign-compare -Wno-defaulted-function-deleted -Wno-inconsistent-missing-override -ffunction-sections -fdata-sections -fno-short-enums -funwind-tables -fstack-protector-strong -Wa,--noexecstack -D_FORTIFY_SOURCE=2 -Wstrict-aliasing=2 -Werror=return-type -Werror=non-virtual-dtor -Werror=address -Werror=sequence-point -Werror=date-time -Werror=format-security -nostdlibinc -m64 -march=x86-64 -DUSE_SSSE3 -mssse3 -msse4 -msse4.1 -msse4.2 -mpopcnt -Iexternal/elfutils/libelf -Iexternal/libcxx/include -Iexternal/libcxxabi/include -Ibionic/libc/include -D__LIBC_API__=10000 -D__LIBM_API__=10000 -D__LIBDL_API__=10000 -Isystem/core/include -Isystem/media/audio/include -Ihardware/libhardware/include -Ihardware/libhardware_legacy/include -Ihardware/ril/include -Iframeworks/native/include -Iframeworks/native/opengl/include -Iframeworks/av/include -isystem bionic/libc/include -isystem bionic/libc/kernel/uapi -isystem bionic/libc/kernel/uapi/asm-x86 -isystem bionic/libc/kernel/android/scsi -isystem bionic/libc/kernel/android/uapi -Ilibnativehelper/include_jni -Wall -Werror -target x86_64-linux-android -Bprebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/x86_64-linux-android/bin -DANDROID_STRICT -fPIC -D_USING_LIBCXX -std=gnu99  -Werror=int-to-pointer-cast -Werror=pointer-to-int-cast -Werror=address-of-temporary -Werror=return-type -Wno-tautological-constant-compare -Wno-tautological-type-limit-compare -Wno-tautological-unsigned-enum-zero-compare -Wno-tautological-unsigned-zero-compare -Wno-enum-compare -Wno-enum-compare-switch -Wno-c++98-compat-extra-semi -Wno-return-std-move-in-c++11 -MD -MF out/soong/.intermediates/system/bpfprogs/ddos/libmybpf/android_x86_64_core_static/obj/system/bpfprogs/ddos/tools/lib/bpf/libbpf.o.d -o out/soong/.intermediates/system/bpfprogs/ddos/libmybpf/android_x86_64_core_static/obj/system/bpfprogs/ddos/tools/lib/bpf/libbpf.o system/bpfprogs/ddos/tools/lib/bpf/libbpf.c
+In file included from system/bpfprogs/ddos/tools/lib/bpf/libbpf.c:41:
+system/bpfprogs/ddos/tools/include/linux/list.h:628:11: error: incompatible pointer types assigning to 'struct hlist_node **' from 'struct hlist_node *' [-Werror,-Wincompatible-pointer-types]
+        n->pprev = (struct hlist_node *)LIST_POISON2;
+                 ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+ninja: build stopped: subcommand failed.
+14:01:36 ninja failed with: exit status 1
+
+[0;31m#### failed to build some targets (4 seconds) ####[00m
+

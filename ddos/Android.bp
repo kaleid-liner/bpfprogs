@@ -1,0 +1,24 @@
+cc_library {
+    name: "libmybpf",
+    
+    srcs: [
+        "tools/lib/bpf/bpf.c",
+        "tools/lib/bpf/btf.c",
+        "tools/lib/bpf/libbpf.c",
+        "tools/lib/bpf/nlattr.c",
+    ],
+
+    local_include_dirs: [
+        "tools/",
+        "tools/include",
+        "tools/perf",
+        "kernel-usr-include",
+    ],
+
+
+    cflags: [
+    ],
+
+    static_libs: ["libelf", "libz"],
+
+}
