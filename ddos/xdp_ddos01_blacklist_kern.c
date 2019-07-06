@@ -4,15 +4,22 @@
  *  Copyright(c) 2017 Andy Gospodarek, Broadcom Limited, Inc.
  */
 #define KBUILD_MODNAME "foo"
-#include <uapi/linux/bpf.h>
-#include <uapi/linux/if_ether.h>
-#include <uapi/linux/if_packet.h>
-#include <uapi/linux/if_vlan.h>
-#include <uapi/linux/ip.h>
-#include <uapi/linux/in.h>
-#include <uapi/linux/tcp.h>
-#include <uapi/linux/udp.h>
+#include <linux/bpf.h>
+#include <linux/if_ether.h>
+#include <linux/if_packet.h>
+#include <linux/if_vlan.h>
+#include <linux/ip.h>
+#include <linux/in.h>
+#include <linux/tcp.h>
+#include <linux/udp.h>
 #include "bpf_helpers.h"
+#include <stdbool.h>
+#include <arpa/inet.h>
+#include <netinet/udp.h>
+
+// just a workaround
+#define likely(x)       __builtin_expect(!!(x), 1)
+#define unlikely(x)     __builtin_expect(!!(x), 0)
 
 enum {
 	DDOS_FILTER_TCP = 0,

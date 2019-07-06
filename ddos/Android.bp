@@ -22,3 +22,34 @@ cc_library {
     static_libs: ["libelf", "libz"],
 
 }
+
+cc_library {
+    name: "libmybpfload",
+    
+    srcs: [
+        "bpf_load.c",
+    ],
+
+    local_include_dirs: [
+        "kernel-usr-include",
+        "tools/lib",
+        "kernel/include",
+    ],
+
+    include_dirs: [
+        "external/elfutils/libelf",
+    ],
+
+    static_libs: ["libelf"],
+    shared_libs: ["libmybpf"],
+}
+
+bpf {
+    name: "xdp_ddos01_blacklist_kern.o",
+
+    srcs: [
+        "xdp_ddos01_blacklist_kern.c",
+    ],
+
+}
+

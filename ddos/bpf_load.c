@@ -437,7 +437,7 @@ static int load_elf_maps_section(struct bpf_map_data *maps, int maps_shndx,
 
 		/* Symbol value is offset into ELF maps section data area */
 		offset = sym[i].st_value;
-		def = (struct bpf_map_def *)(data_maps->d_buf + offset);
+		def = (struct bpf_map_def *)((char *)data_maps->d_buf + offset);
 		maps[i].elf_offset = offset;
 		memset(&maps[i].def, 0, sizeof(struct bpf_map_def));
 		memcpy(&maps[i].def, def, map_sz_copy);
